@@ -65,7 +65,7 @@
 
                         <div class="col-md-4 status">
                            <h5>$<span id="sub-total">1278</span></h5>
-                           <h5>$<span id="tax">0</span></h5>
+                           <h5>$<span id="tax">80</span></h5>
                            <h5>$<span id="total">1278</span></h5>
                         </div>
                      </div>
@@ -136,12 +136,17 @@
          function decrease(id, price, priceId){
             var quentity = getInputValue(id);
             quentity--;
-            document.getElementById(id).value = quentity;
+            if(quentity <=0 ){
+               alert("You must select at least One Product or Remove the product if not needed");
+            }
+            else{
+               document.getElementById(id).value = quentity;
 
-            var currentPrice = getPrice(priceId);
-            document.getElementById(priceId).innerText = currentPrice - price;
+               var currentPrice = getPrice(priceId);
+               document.getElementById(priceId).innerText = currentPrice - price;
 
-            updateTotalPrice();
+               updateTotalPrice();
+            }
          }
 
          function addBtnEventHandler(btnId, inputId, purpose, price, priceId){
