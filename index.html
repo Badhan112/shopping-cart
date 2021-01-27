@@ -12,7 +12,7 @@
 
    <body>
 
-      <section>
+      <section id="product-cart">
          <div class="container">
             <div class="cart">
                <div class="col-md-12 col-lg-10 mx-auto">
@@ -71,11 +71,14 @@
                      </div>
                   </div>
                   <div class="col-md-12 pt-4 pb-4">
-                     <button type="button" class="btn btn-success check-out">Check Out</button>
+                     <button type="button" id="check-out-btn" class="btn btn-success check-out">Check Out</button>
                   </div>
                </div>
             </div>
          </div>
+      </section>
+      <section id="message">
+         <h1 class="text-center">Thank You For Shoping</h1>
       </section>
          
       <script>
@@ -111,7 +114,7 @@
             else{
                phoneCasePrice = getPrice("phoneCase-price");
             }
-            
+
             const tax = getPrice("tax");
             const subTotal = phonePrice + phoneCasePrice;
 
@@ -182,6 +185,13 @@
 
          //Remove Button Event Handler
          addRemoveBtnEventHandler("phoneCase-price", "remove-phoneCase", "phoneCase-area");
+
+         //checkout Button Event Handler
+         const checkoutBtn = document.getElementById("check-out-btn");
+         checkoutBtn.addEventListener("click", function(){
+            document.getElementById("product-cart").style.display = "none";
+            document.getElementById("message").style.display = "block";
+         });
 
       </script>
    </body>
